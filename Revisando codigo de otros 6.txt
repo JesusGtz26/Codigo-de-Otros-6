@@ -1,0 +1,44 @@
+/*
+ * Este programa genera un arreglo de 20 números aleatorios entre 20 y 400.
+ * Luego, el usuario elige si quiere resaltar en pantalla los múltiplos de 5 o los múltiplos de 7.
+ * Los números que son múltiplos de la elección del usuario se mostrarán entre corchetes [].
+ */
+
+import java.util.Scanner;
+
+public class Codigo6 {
+    
+    public static void main(String[] args) {
+        // Inicializamos un arreglo de tamaño 20
+        int[] n = new int[20];
+
+        // Llenamos el arreglo con números aleatorios entre 20 y 400
+        for (int i = 0; i < 20; i++) {
+            n[i] = (int)(Math.random() * 381) + 20; // Números entre 20 y 400
+            System.out.print(n[i] + " "); // Mostramos los números generados
+        }
+
+        // Creación de Scanner para obtener la entrada del usuario
+        Scanner scanner = new Scanner(System.in);
+
+        // Pedimos al usuario que elija si quiere resaltar los múltiplos de 5 o de 7
+        System.out.println("\n¿Qué números quiere resaltar?");
+        System.out.print("(1 – los múltiplos de 5, 2 – los múltiplos de 7): ");
+        int opcion = Integer.parseInt(scanner.nextLine());
+
+        // Determinamos el múltiplo según la elección del usuario
+        int multiplo = (opcion == 1) ? 5 : 7;
+
+        // Recorremos el arreglo para mostrar los números y resaltamos los múltiplos
+        for (int e : n) { // Corregido el uso de "foreach"
+            if (e % multiplo == 0) {
+                System.out.print("[" + e + "] "); // Resaltamos los múltiplos con corchetes
+            } else {
+                System.out.print(e + " "); // Mostramos los demás números sin resaltar
+            }
+        }
+
+        // Cerramos el Scanner
+        scanner.close();
+    }
+}
